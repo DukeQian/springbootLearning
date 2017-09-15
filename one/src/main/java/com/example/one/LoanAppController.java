@@ -32,7 +32,7 @@ public class LoanAppController {
     }
 
     /**
-     * 点击提交按钮，准备录入信息的时候
+     * 申请借款 选择产品，点击提交按钮，准备录入信息的时候
      *
      */
     @PostMapping(value = "riskCamera/initCamera.do")
@@ -56,7 +56,7 @@ public class LoanAppController {
 
 
     /**
-     * 点击提交按钮，准备录入信息的时候
+     * 贷款说明
      *
      */
     @PostMapping(value = "page/loanInstruction.do")
@@ -80,7 +80,7 @@ public class LoanAppController {
     )
     {
         System.out.println(userId);
-        //TODO 建表——T_USER_AUTHENTICATION 用户认证表  【用户， 认证类型， 认证时间， 认证状态】，总的认证状态是否要记录
+        //TODO 建表——T_USER_AUTHENTICATION 用户认证表  【ID,用户， 认证类型， 认证具体项, 认证时间， 认证状态】，总的认证状态是否要记录
         //TODO 数据定义——实名认证 RealNameAuth, 人脸识别 FaceAuth, 绑定银行卡 CardAuth
         return result;
     }
@@ -89,7 +89,7 @@ public class LoanAppController {
      * 实名认证
      *
      */
-    @PostMapping(value = "identity/doRealNameAuth.do")
+        @PostMapping(value = "identity/doRealNameAuth.do")
     public Map<String, Object> doRealNameAuth(
             @RequestParam("files") MultipartFile[] files,
             @RequestParam String name,
@@ -104,6 +104,7 @@ public class LoanAppController {
         //TODO 将文件记录到数据库中
         //TODO 接口——调用实名认证接口
         //TODO 接口返回处理
+        //身份认证
         return result;
     }
 
@@ -136,6 +137,7 @@ public class LoanAppController {
         System.out.println(userId);
         System.out.println(cardNo);
         //TODO 这个需要讨论下
+        //身份认证
         return result;
     }
 
@@ -201,6 +203,55 @@ public class LoanAppController {
         System.out.println(userId);
         //TODO 更新个人单位信息
         //TODO QQ格式验证，邮箱格式验证，必输入项验证，【字段比较多，开发注意细心】，这些地段数据库中的映射，看看有没有少
+        return result;
+    }
+
+
+    //TODO 查询认证状态   queryExternalAuthStatus
+    //TODO 8项认证 具体的我这边还要讨论下
+    //常用平台的 报告          【支付宝，淘宝，京东】
+    //公积金 登录获取   社保    【公积金，社保】
+    //学信网  运营商  人行征信 【学信网 手机认证】
+
+
+
+    /**
+     * 查询进件进度
+     *
+     */
+    @PostMapping(value = "riskCamera/queryLoanProcess.do")
+    public Map<String, Object> queryLoanProcess(
+            @RequestParam String userId
+            //TODO 传入对象设计
+    ) {
+        System.out.println(userId);
+        //TODO 查询在读进件这个逻辑会变，要支持多笔进件
+        return result;
+    }
+
+    /**
+     * 个人中心修改
+     *
+     */
+    @PostMapping(value = " trusteeAccount/myAccount.do")
+    public Map<String, Object> myAccount(
+            @RequestParam String userId
+            //TODO 传入对象设计
+    ) {
+        System.out.println(userId);
+        //TODO 还款计划这边需要调整
+        //TODO 添加链接
+        return result;
+    }
+
+
+    /**
+     * 提交进件
+     */
+    @PostMapping(value = "riskCamera/submitCamera.do")
+    public Map<String, Object> submitCamera(){
+        //TODO 这边需要验证评分规则吧
+
         return result;
     }
 }

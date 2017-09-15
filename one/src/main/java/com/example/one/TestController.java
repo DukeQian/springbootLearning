@@ -4,11 +4,16 @@ package com.example.one;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class TestController {
 
     @Autowired
     private ProjectConfig projectConfig;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @RequestMapping(value="/test1", method = RequestMethod.GET)
     public String say1(){
@@ -33,5 +38,16 @@ public class TestController {
     @PostMapping(value="/test3")
     public String sayPostParam(@RequestParam(value = "id", required = false, defaultValue = "1") String param){
         return  param;
+    }
+
+    @GetMapping(value = "/queryStudent")
+    public List<Student> queryStudent(){
+        Student a = new Student();
+        a.setClassId(1);
+        a.setName("test");
+        a.setSex(1);
+        studentRepository.save(a);
+        System.out.println(studentRepository.findAll());
+        return studentRepository.findAll();
     }
 }
