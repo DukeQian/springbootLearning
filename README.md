@@ -82,7 +82,7 @@ http://www.cnblogs.com/rulian/p/6533109.html<br>
 1 表单验证 <br>
 2 AOP请求处理 <br>
 3 异常处理 <br>
-
+************************
 对于项目重新的整理，项目的路径，可以再学习下git的操作<br>
 git checkout -b web-2 web-2
 
@@ -91,7 +91,46 @@ BindingResult, 同时添加@Valid的注解
 
 关于VUE的课程学习  http://www.imooc.com/learn/796<br>
 
+AOP的基本概念
 
+************************
+spring-boot-starter-aop
+
+在访问方法前面，记录日志，知道进入了方法体内
+@Aspect
+@Component注解
+同时在里面的方法前面加入根据适配符号找到对应的方法集合
+@Before("execution(public * com.example.one.controller.TestController.queryStudent(..))")
+<br>
+
+@PointCut注解，切点，让切面直接引入的概念
+
+案例是：
+在方法的前面可以直接打印出请求的地址，请求的类型，方法名，参数，同时打印出返回的结果
+@AfterReturning(returning = "object", pointcut = "log()")
+public void doAfterReturning(Object object)
+
+************************
+异常处理
+当某些条件不满抛出信息。
+1 不够资格，权限，次数
+2 代码空指针，越界
+3 数据库的异常
+
+返回格式要统一
+【code  message data】
+然后提供一些工具类，代码公共部分的封装，格式统一，这样代码很清爽了。
+把所有的逻辑放到service中
+设标记返回不通的结果。
+
+统一遇到异常返回相同的结果类型
+把异常拼命往外抛，抛给异常处理器去处理
+定义自定义异常 
+
+对于其他异常，我们该如何处理。先打印下日志
+异常中code， message统一地进行管理起来,通过枚举去实现
+
+**************************
 
 
 
