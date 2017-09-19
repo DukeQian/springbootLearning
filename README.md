@@ -126,11 +126,51 @@ public void doAfterReturning(Object object)
 统一遇到异常返回相同的结果类型
 把异常拼命往外抛，抛给异常处理器去处理
 定义自定义异常 
-
+@ControllerAdvice
+@ExceptionHandler
 对于其他异常，我们该如何处理。先打印下日志
 异常中code， message统一地进行管理起来,通过枚举去实现
 
 **************************
+单元测试
+你把bug的程序丢给别人测试，这个很不负责的行为。当然像领导，事物繁忙，或者逻辑复杂，测试环境问题。
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@Test注解
+
+Assert.assertEqual(13, 13);
+
+通过IDE快速的创建测试案例
+
+方法的请求， URL的测试
+@AutoConfigureMocked
+MockMvc mvc;
+mvc.perform  MockRequestBuilders.get
+
+
+mvn clean package -Dmaven.test.skip=true
+
+
+最后看下DOCKER的视频，将开发
+http://www.imooc.com/video/15640
+
+对开发，运维,测试都是很有帮助的技术 linux  bash
+镜像容器， 多容器app, 容器存储， registry
+
+sudo wget -qO- https://get.docker.com | sh ,
+安装没啥说的，命令行说一下
+
+docker run 镜像名称 echo hello docker
+docker run nginx
+docker images -p 8080:80 -d
+docker ps
+docker cp index.html 镜像ID 镜像内部的文件路径://**/**
+docker stop
+docker commit -m 'fun' id
+docker rmi id
+
+
 
 
 
