@@ -10,7 +10,7 @@ public enum  ResultEnum {
 
     private String message;
 
-    public ResultEnum(Integer code, String message) {
+    ResultEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
