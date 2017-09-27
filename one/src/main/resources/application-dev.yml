@@ -1,6 +1,6 @@
 server:
   port: 8080
-  context-path: /one
+  context-path: /sell
 
 projectConfig:
   one: name_dev
