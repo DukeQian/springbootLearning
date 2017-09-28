@@ -4,7 +4,11 @@ package com.example.one.enums;
 public enum  ResultEnum {
 
     UNKNOWN_ERROR(1,"未知错误"),
-    SUCCESSOR(2,"成功");
+    SUCCESSOR(2,"成功"),
+
+    PRODUCT_NOT_EXIST(10, "商品不存在"),
+
+    ;
 
     private Integer code;
 
