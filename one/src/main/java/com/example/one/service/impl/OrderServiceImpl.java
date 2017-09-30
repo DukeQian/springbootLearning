@@ -5,6 +5,8 @@ import com.example.one.domain.OrderMaster;
 import com.example.one.domain.ProductInfo;
 import com.example.one.dto.CartDTO;
 import com.example.one.dto.OrderDTO;
+import com.example.one.enums.OrderStatusEnum;
+import com.example.one.enums.PayStatusEnum;
 import com.example.one.enums.ResultEnum;
 import com.example.one.exception.SellException;
 import com.example.one.repository.OrderDetailRepository;
@@ -58,9 +60,11 @@ public class OrderServiceImpl implements OrderService{
         }
 
         OrderMaster orderMaster = new OrderMaster();
+        BeanUtils.copyProperties(orderDTO, orderMaster);
         orderMaster.setOrderId(orderId);
         orderMaster.setOrderAmount(orderAmount);
-        BeanUtils.copyProperties(orderDTO, orderMaster);
+        orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
+        orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
         orderMasterRepository.save(orderMaster);
 
         List<CartDTO> cartDTOList = new ArrayList<>();
