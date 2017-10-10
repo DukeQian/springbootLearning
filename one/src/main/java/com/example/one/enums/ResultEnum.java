@@ -14,6 +14,8 @@ public enum  ResultEnum {
     ORDERMASTER_UPDATE_FAIL(15,"更新失败"),
     ORDER_DETAIL_EMPTY(15,"商品没有"),
     ORDERPAYSTATUS_ERROR(15,"支付状态不正确"),
+    PARAM_ERROR(1,"参数不正确"),
+    CART_EMPTY(1,"购物车不能为空"),
 
 
     ;
