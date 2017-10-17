@@ -3,6 +3,7 @@ package com.example.one.converter;
 import com.example.one.domain.OrderDetail;
 import com.example.one.dto.OrderDTO;
 import com.example.one.enums.ResultEnum;
+import com.example.one.exception.SellException;
 import com.example.one.form.OrderForm;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,7 +30,7 @@ public class OrderForm2OrderDTOConverter {
             orderDetailList = gson.fromJson(orderForm.getItems(), new TypeToken<List<OrderDetail>>(){}.getType());
         }catch (Exception e){
             log.error("参数转换不正确",orderForm.getItems());
-            throw new Exception(ResultEnum.PARAM_ERROR);
+            throw new SellException(ResultEnum.PARAM_ERROR);
         }
         orderDTO.setOrderDetailList(orderDetailList);
 

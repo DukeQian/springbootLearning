@@ -1,7 +1,9 @@
 package com.example.one.util;
 
 import com.example.one.vo.ResultVO;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultVOUtil {
 
     public static ResultVO success(Object object){

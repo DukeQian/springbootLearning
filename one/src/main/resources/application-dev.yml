@@ -26,4 +26,36 @@ spring:
     url: jdbc:mysql://172.16.107.67/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: false
+  jackson:
+    default-property-inclusion: non_null
+  freemarker:
+    allow-request-override: false
+    cache: true
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+
+########################################################
+###FREEMARKER (FreeMarkerAutoConfiguration)
+########################################################
+#spring.freemarker.allow-request-override=false
+#spring.freemarker.cache=true
+#spring.freemarker.check-template-location=true
+#spring.freemarker.charset=UTF-8
+#spring.freemarker.content-type=text/html
+#spring.freemarker.expose-request-attributes=false
+#spring.freemarker.expose-session-attributes=false
+#spring.freemarker.expose-spring-macro-helpers=false
+#spring.freemarker.prefix=
+#spring.freemarker.request-context-attribute=
+#spring.freemarker.settings.*=
+#spring.freemarker.suffix=.ftl
+#spring.freemarker.template-loader-path=classpath:/templates/ #comma-separated list
+#spring.freemarker.view-names= # whitelist of view names that can be resolved
+
 
