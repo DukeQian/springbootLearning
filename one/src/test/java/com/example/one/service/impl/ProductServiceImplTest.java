@@ -53,9 +53,19 @@ public class ProductServiceImplTest {
         productInfo.setProductIcon("http://dafa");
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         productInfo.setCategoryType(1);
-
         ProductInfo result = productService.save(productInfo);
         Assert.assertNotNull(result);
     }
 
+    @Test
+    public void OnSale(){
+        ProductInfo result = productService.onSale("123456");
+        Assert.assertEquals(ProductStatusEnum.UP, result.getProductStatusEnum());
+    }
+
+    @Test
+    public void OffSale(){
+        ProductInfo result = productService.offSale("123456");
+        Assert.assertEquals(ProductStatusEnum.DOWN, result.getProductStatusEnum());
+    }
 }

@@ -5,7 +5,7 @@ public enum  ResultEnum {
 
     UNKNOWN_ERROR(1,"未知错误"),
     SUCCESSOR(2,"成功"),
-
+    SUCCESS(0, "成功"),
     PRODUCT_NOT_EXIST(10, "商品不存在"),
     PRODUCT_STOCK_ERROR(11, "库存不足"),
     ORDER_NOT_EXIST(12,"订单号不存在"),
@@ -17,6 +17,7 @@ public enum  ResultEnum {
     PARAM_ERROR(1,"参数不正确"),
     CART_EMPTY(1,"购物车不能为空"),
     ORDER_OWNER_ERROR(19,"该订单不属于该客户"),
+    PRODUCT_STATUS_ERROR(19,"商品状态不正确"),
     ;
 
     private Integer code;
