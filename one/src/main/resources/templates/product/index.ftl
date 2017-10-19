@@ -32,23 +32,24 @@
                                 <img height="100" width="100" src="${(productInfo.productIcon)!''}" alt="">
                                 <input name="productIcon" type="text" class="form-control" value="${(productInfo.productIcon)!''}"/>
                             </div>
-                            <option value="${category.categoryType}"
-                                <#if(productInfo.categoryType)?? && productInfo.categoryType==category.categoryType>
-                                    selected
-                                </#if>
-                                >
-                                ${category.categoryName}
-                            </option>
+
                             <div class="form-group">
                                 <label>类目</label>
                                 <select name="categoryType" class="form-control">
                                     <#list categoryList as category>
+                                        <option value="${category.categoryType}"
+                                            <#if (productInfo.categoryType)?? && productInfo.categoryType == category.categoryType>
+                                                selected
+                                            </#if>
+                                        >
+                                        ${category.categoryName}
+                                        </option>
                                     </#list>
                                 </select>
                             </div>
 
                             <input hidden type="text" name="productId" value="${(productInfo.productId)!''}">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">提交</button>
                         </form>
                     </div>
                 </div>

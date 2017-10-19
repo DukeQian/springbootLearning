@@ -2,11 +2,11 @@ package com.example.one.controller;
 
 import com.example.one.domain.ProductCategory;
 import com.example.one.domain.ProductInfo;
-import com.example.one.enums.ProductStatusEnum;
 import com.example.one.exception.SellException;
 import com.example.one.form.ProductForm;
 import com.example.one.service.CategoryService;
 import com.example.one.service.ProductService;
+import com.example.one.util.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -102,8 +102,13 @@ public class SellerProductController {
             map.put("url", "/sell/seller/product/index");
             return new ModelAndView("common/error", map);
         }
+        ProductInfo productInfo = new ProductInfo();
         try{
-            ProductInfo productInfo = productService.findOne(productForm.getProductId());
+            if(!StringUtils.isEmpty(productForm.getProductId())){
+                productInfo = productService.findOne(productForm.getProductId());
+            }else{
+                productForm.setProductId(KeyUtil.genUniqueKey());
+            }
             BeanUtils.copyProperties(productForm, productInfo);
             productService.save(productInfo);
         }catch(SellException e){
